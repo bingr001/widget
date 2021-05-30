@@ -41,7 +41,7 @@ const Search = () => {
       <div key={result.pageid} className="item">
         <div className="right floated content">
           <a
-            className="ui button"
+            className="btn btn-primary float-right"
             href={`https://en.wikipedia.org?curid=${result.pageid}`}
           >
             Go
@@ -56,11 +56,12 @@ const Search = () => {
   });
 
   return (
-    <div>
-      <div className="ui form">
-        <div className="field">
-          <label>Enter Search Term</label>
-          <div className="ui icon input">
+    <div className= ".container-fluid">
+      <div >
+        <div className="form-row justify-content-center">
+          <h1>Enter Search Term</h1>
+        </div>
+        <div className= "form-row justify-content-center">
             <input
               value={term}
               onChange={(e) => setTerm(e.target.value)}
@@ -68,10 +69,8 @@ const Search = () => {
             />
             <i className="search icon"></i>
           </div>
-
-        </div>
       </div>
-      <div className="ui celled list">{renderedResults}</div>
+      <ul className="ui celled list">{renderedResults}</ul>
     </div>
   );
 };
