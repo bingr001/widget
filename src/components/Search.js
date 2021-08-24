@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styling.css'
 
 const Search = () => {
   const [term, setTerm] = useState('art');
@@ -39,38 +40,39 @@ const Search = () => {
   const renderedResults = results.map((result) => {
     return (
       <div key={result.pageid} className="item">
-        <div className="right floated content">
+        
+        <div className="content">
+          <div className="title">{result.title}</div>
+          <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
+        </div>
+        <div className="right-floated-content">
           <a
-            className="btn btn-primary float-right"
+            className="btn-float-right"
             href={`https://en.wikipedia.org?curid=${result.pageid}`}
           >
             Go
           </a>
-        </div>
-        <div className="content">
-          <div className="header">{result.title}</div>
-          <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
         </div>
       </div>
     );
   });
 
   return (
-    <div className= ".container-fluid">
+    <div className= "container">
       <div >
-        <div className="form-row justify-content-center">
+        <div className="form-row">
           <h1>Enter Search Term</h1>
         </div>
-        <div className= "form-row justify-content-center">
+        <div className= "form-row ">
             <input
               value={term}
               onChange={(e) => setTerm(e.target.value)}
-              className="ui icon input"
+              className="ui-icon-input"
             />
-            <i className="search icon"></i>
+            <i class="fas fa-search"></i>
           </div>
       </div>
-      <ul className="ui celled list">{renderedResults}</ul>
+      <ul className="celled-list">{renderedResults}</ul>
     </div>
   );
 };
